@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>konyacc</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Arial,sans-serif;background:#050508;color:#fff}
+body{overflow:hidden}.bg{position:fixed;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:brightness(.38);transform:scale(1.03)}
+.overlay{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% 45%,rgba(120,50,255,.16),rgba(0,0,0,.72) 70%)}
+main{height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{width:min(620px,94vw);padding:42px 28px;border:1px solid rgba(180,100,255,.35);border-radius:28px;background:rgba(10,8,18,.56);backdrop-filter:blur(14px);box-shadow:0 0 55px rgba(130,55,255,.18);text-align:center}
+h1{margin:0;font-size:52px;letter-spacing:3px;text-shadow:0 0 25px rgba(180,90,255,.65)}
+.sub{margin:8px 0 30px;color:#b9a9c9}
+.info{display:grid;gap:12px;text-align:left}.item{padding:16px 18px;border-radius:16px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.08)}
+.item b{display:block;margin-bottom:4px}.item span{color:#cfc5d8}
+button{margin-top:24px;padding:13px 22px;border:0;border-radius:999px;background:#8b45ff;color:white;font-weight:700;cursor:pointer;box-shadow:0 0 22px rgba(139,69,255,.35)}
+button:hover{transform:translateY(-1px);box-shadow:0 0 30px rgba(139,69,255,.55)}
+small{display:block;margin-top:14px;color:#8f8497}
+@media(max-width:500px){h1{font-size:40px}.card{padding:34px 20px}}
+</style>
+</head>
+<body>
+<video class="bg" autoplay muted loop playsinline>
+  <source src="setup.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+<main>
+<section class="card">
+  <h1>konyacc</h1>
+  <div class="sub">welcome to my space</div>
+  <div class="info">
+    <div class="item">🎮 <b>Currently Playing</b><span>Counter-Strike</span></div>
+    <div class="item">🎵 <b>Currently Listening</b><span>Tuesday 2.0</span></div>
+    <div class="item">💻 <b>Setup</b><span>my setup</span></div>
+  </div>
+  <button id="musicBtn">▶ Play Music</button>
+  <audio id="music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  <small>© 2026 konyacc</small>
+</section>
+</main>
+<script>
+const audio=document.getElementById('music');
+const btn=document.getElementById('musicBtn');
+btn.addEventListener('click', async ()=>{
+  if(audio.paused){
+    try{await audio.play();btn.textContent='⏸ Pause Music';}
+    catch(e){btn.textContent='▶ Play Music';}
+  }else{
+    audio.pause();btn.textContent='▶ Play Music';
+  }
+});
+</script>
+</body>
+</html>
